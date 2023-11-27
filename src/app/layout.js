@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Providers } from "@/lib/redux/Provider";
+import { Root } from "@/components/Root/Root";
 // import { Head } from "next/document";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,7 +23,7 @@ export default function RootLayout({ children }) {
         />
         <link
           key="icon"
-          rel="icon" 
+          rel="icon"
           type="image/png"
           sizes="32x32"
           href="https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png"
@@ -34,7 +36,11 @@ export default function RootLayout({ children }) {
           href="https://cdn.oaistatic.com/_next/static/media/favicon-16x16.9b8dbb69.png"
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>
+          <Root>{children}</Root>
+        </Providers>
+      </body>
     </html>
   );
 }
